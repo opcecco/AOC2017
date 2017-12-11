@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Advent of Code 2017: Day 7 Part 1
+Advent of Code 2017: Day 7 Part 2
 https://adventofcode.com/2017/day/7
 """
 
