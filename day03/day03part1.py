@@ -13,7 +13,7 @@ ring = 0
 max_ring_val = 1
 
 # Find while ring/layer our number is in
-ring = int(math.floor(math.ceil(math.sqrt(input))/2))
+ring = int(math.floor(math.ceil(math.sqrt(input)) // 2))
 
 # Do some arithmetic to find distance from center
 sequence_index = (input - 1) % (2 * ring)
