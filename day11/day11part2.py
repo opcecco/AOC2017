@@ -20,12 +20,16 @@ reduce_dict = {
 	('n', 'sw',): 'nw',
 }
 
-# Return the shortest distance given an list of step inputs
-def get_shortest_distance(step_list):
-	global reduce_dict
+with open(sys.argv[1], 'r') as file:
+	input = file.readline().split(',')
 	
-	# Count each movement step and store in dictionary
-	movement_dict = dict((step, step_list.count(step),) for step in set(step_list))
+movement_dict = {}
+max_distance = 0
+
+for step in input:
+	
+	# Add the next step to the movement dictionary
+	movement_dict[step] = movement_dict.get(step, 0) + 1
 	
 	was_reduced = True
 	
@@ -43,13 +47,11 @@ def get_shortest_distance(step_list):
 				movement_dict[reduce_dict[pair]] = movement_dict.get(reduce_dict[pair], 0) + reduction
 				was_reduced = True
 				
-	# Remove non-moves from dictionary and print total reduced movements
+	# Remove non-moves from dictionary and check if the current distance is the max
 	movement_dict[None] = 0
-	return sum(movement_dict.values())
-	
-	
-with open(sys.argv[1], 'r') as file:
-	input = file.readline().split(',')
-	
-# Find all partial distances for each movement step and print the maximum
-print max(get_shortest_distance(input[:i + 1]) for i in xrange(len(input)))
+	this_distance = sum(movement_dict.values())
+	if this_distance > max_distance:
+		max_distance = this_distance
+		
+# Print the maximum distance
+print max_distance
