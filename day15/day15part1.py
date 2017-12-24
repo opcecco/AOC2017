@@ -11,6 +11,7 @@ generator_a, generator_b = int(sys.argv[1]), int(sys.argv[2])
 
 count = 0
 
+# Loop through generators 40 million times and count how many match their lower 16 bits
 for i in xrange(40000000):
 	generator_a = (generator_a * 16807) % 2147483647
 	generator_b = (generator_b * 48271) % 2147483647
