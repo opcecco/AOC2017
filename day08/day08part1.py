@@ -18,7 +18,7 @@ def run_instruction(register, operation, value, cond_register, cond_comparison, 
 		'<=': lambda a, b: a <= b,
 		'==': lambda a, b: a == b,
 		'!=': lambda a, b: a != b,
-	}.get(cond_comparison)
+	}[cond_comparison]
 	
 	if compare_func(register_dict.get(cond_register), cond_value):
 		if operation == 'inc':
